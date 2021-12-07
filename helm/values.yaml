@@ -1,0 +1,42 @@
+deploy:
+  svc:
+    enabled: true
+    name: golang
+  name: golang
+  namespace: golang
+  replicas: 2
+  port: 8081
+  image: oauth-api
+  tag: main
+  registry: bcfmhakan/
+  resources:
+    enabled: true
+  requestCpu: 100m
+  requestMemory: 1Gi
+  limitCpu: 500m
+  limitMemory: 2Gi
+hpa:
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 3
+    targetCPUUtilizationPercentage: 70
+probe:
+  enabled: false
+  failureThreshold: 1
+  periodSeconds: 10
+  timeoutSeconds: 10
+  initialDelaySeconds: 40
+  pathreadiness: /
+  pathliveness: /
+ingress:
+  enabled: false
+  hosts: ""
+configmap:
+  enabled: false
+  name: golang
+virtualservice:
+  enabled: true
+  versionname: v1
+  prefix: v1/
+  uri: /
