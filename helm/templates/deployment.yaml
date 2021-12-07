@@ -60,18 +60,7 @@ spec:
           initialDelaySeconds: {{ .Values.probe.initialDelaySeconds }}
           timeoutSeconds: {{ .Values.probe.timeoutSeconds }}
 {{- end }}
-{{- if .Values.deploy.efs.enabled }}
-        volumeMounts:
-        - mountPath: {{ .Values.deploy.efs.containerPath }}
-          name: oauth-mount
-{{- end }}
         ports:
         - containerPort: {{ .Values.deploy.port }} 
       restartPolicy: Always
-{{- if .Values.deploy.efs.enabled }}
-      volumes:
-      - name: oauth-mount
-        nfs:
-          path: {{ .Values.deploy.efs.efsPath }}
-          server: {{ .Values.deploy.efs.efsServer }}
-{{- end }}
+
