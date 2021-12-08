@@ -6,7 +6,7 @@ deploy:
   namespace: golang
   replicas: 2
   port: 8081
-  image: oauth-api
+  image: golang
   tag: main
   registry: bcfmhakan/
   resources:
@@ -15,6 +15,8 @@ deploy:
   requestMemory: 1Gi
   limitCpu: 500m
   limitMemory: 2Gi
+  imagePullSecrets: dockerhub
+   
 hpa:
   autoscaling:
     enabled: true
