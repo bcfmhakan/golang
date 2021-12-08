@@ -5,6 +5,7 @@ import (
     "html"
     "log"
     "net/http"
+    "github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
@@ -16,6 +17,9 @@ func main() {
     http.HandleFunc("/hi", func(w http.ResponseWriter, r *http.Request){
         fmt.Fprintf(w, "Hi")
     })
+
+   	// Prometheus endpoint
+	router.Path("/prometheus").Handler(promhttp.Handler())
 
     log.Fatal(http.ListenAndServe(":8081", nil))
 
