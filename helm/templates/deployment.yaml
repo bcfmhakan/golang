@@ -35,6 +35,8 @@ spec:
 {{- end }}
         image: {{ .Values.deploy.registry }}{{ .Values.deploy.image }}:{{ .Values.deploy.tag }}
         imagePullPolicy: Always
+        imagePullSecrets:
+        - name: {{ .Values.deploy.imagePullSecrets }}
 {{- if .Values.deploy.resources.enabled }}
         resources:
           requests:
