@@ -12,6 +12,9 @@ spec:
       app: {{ .Values.deploy.name }}{{ .Values.virtualservice.versionname }}
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: '{{ .Values.deploy.scrape }}'
+        prometheus.io/port: '{{ .Values.deploy.port }}'
       labels:
         app: {{ .Values.deploy.name }}{{ .Values.virtualservice.versionname }}
     spec:
