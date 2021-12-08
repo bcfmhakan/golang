@@ -16,6 +16,7 @@ deploy:
   limitCpu: 500m
   limitMemory: 2Gi
   imagePullSecrets: dockerhub
+  scrape: true
    
 hpa:
   autoscaling:
