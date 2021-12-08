@@ -19,8 +19,7 @@ func main() {
     })
 
     // Prometheus endpoint
-    router.Path("/prometheus").Handler(promhttp.Handler())
-
+    http.Handle("/metrics", promhttp.Handler())
     log.Fatal(http.ListenAndServe(":8081", nil))
 
 }
