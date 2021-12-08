@@ -12,9 +12,9 @@ deploy:
   resources:
     enabled: true
   requestCpu: 100m
-  requestMemory: 1Gi
+  requestMemory: 100Mi
   limitCpu: 500m
-  limitMemory: 2Gi
+  limitMemory: 300Mi
   imagePullSecrets: dockerhub
   scrape: true
    
