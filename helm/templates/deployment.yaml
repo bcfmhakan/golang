@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.deploy.name }}-{{ .Values.virtualservice.versionname }}-deployment
+  name: {{ .Values.deploy.name }}-deployment
   namespace: {{ .Values.deploy.namespace }}
   labels:
-    app: {{ .Values.deploy.name }}{{ .Values.virtualservice.versionname }}
+    app: {{ .Values.deploy.name }}
 spec:
   replicas: {{ .Values.deploy.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.deploy.name }}{{ .Values.virtualservice.versionname }}
+      app: {{ .Values.deploy.name }}
   template:
     metadata:
       annotations:
         prometheus.io/scrape: '{{ .Values.deploy.scrape }}'
         prometheus.io/port: '{{ .Values.deploy.port }}'
       labels:
-        app: {{ .Values.deploy.name }}{{ .Values.virtualservice.versionname }}
+        app: {{ .Values.deploy.name }}
     spec:
 {{- if .Values.deploy.nodeselector }}
       affinity:
