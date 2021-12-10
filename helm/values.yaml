@@ -13,7 +13,7 @@ deploy:
     enabled: true
   requestCpu: 100m
   requestMemory: 100Mi
-  limitCpu: 500m
+  limitCpu: 300m
   limitMemory: 300Mi
   imagePullSecrets: dockerhub
   scrape: true
@@ -28,18 +28,13 @@ probe:
   enabled: false
   failureThreshold: 1
   periodSeconds: 10
-  timeoutSeconds: 10
-  initialDelaySeconds: 40
+  timeoutSeconds: 8
+  initialDelaySeconds: 15
   pathreadiness: /
   pathliveness: /
 ingress:
-  enabled: false
-  hosts: ""
+  enabled: true
+  hosts: "golang.bestcloudfor.me"
 configmap:
   enabled: false
   name: golang
-virtualservice:
-  enabled: true
-  versionname: v1
-  prefix: v1/
-  uri: /
