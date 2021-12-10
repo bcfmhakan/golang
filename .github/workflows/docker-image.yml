@@ -32,5 +32,5 @@ jobs:
         with:
           context: ./
           push: true
-          tags: bcfmhakan/golang:$(date +%s)
+          tags: bcfmhakan/golang:$GITHUB_RUN_ID
           labels: ${{ steps.meta.outputs.labels }}
