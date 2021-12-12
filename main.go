@@ -1,7 +1,6 @@
 package main
 
-import 
-    "html/template"
+import (
     "fmt"
     "html"
     "log"
@@ -11,16 +10,12 @@ import
 
 func main() {
 
-    
-    // An HTML template
-
-        
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         
-        fmt.Fprintf(w,"<img src='https://media-exp1.licdn.com/dms/image/C4D22AQF-oJhwPSSQNQ/feedshare-shrink_1280/0/1638953672281?e=1642032000&amp;v=beta&amp;t=veoZsqkTUV9edSrTlyIQJqX4lzaH44kHBShXwVudQrQ'>")
+        fmt.Fprintf(w, "<img src='https://media-exp1.licdn.com/dms/image/C4D22AQF-oJhwPSSQNQ/feedshare-shrink_1280/0/1638953672281?e=1642032000&v=beta&t=veoZsqkTUV9edSrTlyIQJqX4lzaH44kHBShXwVudQrQ' >", html.EscapeString(r.URL.Path))
     })
 
-    http.HandleFunc("/bc4m", func(w http.ResponseWriter, r *http.Request){
+    http.HandleFunc("/hi", func(w http.ResponseWriter, r *http.Request){
         fmt.Fprintf(w, "Hi")
     })
 
