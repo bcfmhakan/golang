@@ -40,7 +40,6 @@ jobs:
     needs:
       - push_to_registry    
     steps:
-    steps:
       - name: Check out the repo
         uses: actions/checkout@v2
         
