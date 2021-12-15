@@ -46,7 +46,7 @@ jobs:
       - uses: imranismail/setup-kustomize@v1
       - run: |
           cd helm
-          kustomize edit set deploy tag:${{ github.run_number }}
+          kustomize edit set deploy "tag:${{ github.run_number }}"
           git add .
           git commit -m "Set `app` image tag to `${{ github.run_number }}"
           git push
