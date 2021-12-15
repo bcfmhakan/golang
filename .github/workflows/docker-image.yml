@@ -40,6 +40,10 @@ jobs:
     needs:
       - push_to_registry    
     steps:
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+        
       - uses: imranismail/setup-kustomize@v1
       - run: |
           cd helm
