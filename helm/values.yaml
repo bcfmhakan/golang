@@ -7,7 +7,7 @@ deploy:
   replicas: 2
   port: 8081
   image: golang
-  tag: 50
+  tag: 58
   registry: bcfmhakan/
   resources:
     enabled: true
