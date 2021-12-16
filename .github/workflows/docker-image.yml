@@ -35,18 +35,3 @@ jobs:
 #          tags: ${{ steps.meta.outputs.tags }}
           tags: bcfmhakan/golang:${{ github.run_number }}
           labels: ${{ steps.meta.outputs.labels }}
-  trigger-deploy:
-    runs-on: ubuntu-latest
-    needs:
-      - push_to_registry    
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-        
-      - uses: imranismail/setup-kustomize@v1
-      - run: |
-          cd helm
-          kustomize edit set deploy "tag:${{ github.run_number }}"
-          git add .
-          git commit -m "Set `app` image tag to `${{ github.run_number }}"
-          git push
