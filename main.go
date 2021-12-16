@@ -5,6 +5,7 @@ import (
 
 	"github.com/nelkinda/health-go"
 	"github.com/nelkinda/health-go/checks/sysinfo"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
@@ -16,6 +17,7 @@ func main() {
 		sysinfo.Health(),
 	)
 	http.HandleFunc("/health", h.Handler)
+	http.Handle("/metrics", promhttp.Handler())
 	http.Handle("/", http.FileServer(http.Dir("./static")))
 	http.ListenAndServe(":3000", nil)
 }
