@@ -46,7 +46,7 @@ jobs:
           ssh-key: ${{ secrets.GIT_SSH }}
           repository: bcfmhakan/devops
       - run: |
-          python3 ./yaml_editor.py --tag=${{ github.run_number }} --path=golang-helm/values.yaml ;
+          python3 ./yaml_editor.py --tag=${{ github.run_number }} --path=golang-helm/test-values.yaml ;
           git config --global user.email "${{ secrets.GIT_MAIL }}"
           git config --global user.name "${{ secrets.GIT_USER }}";
           git add golang-helm/values.yaml ;
