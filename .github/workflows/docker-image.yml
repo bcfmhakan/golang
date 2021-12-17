@@ -46,6 +46,6 @@ jobs:
           repository: bcfmhakan/devops
       - run: |
           python3 ./yaml_editor.py --tag=${{ github.run_number }} --path=golang-helm/values.yaml ;
-          git add golang-helm/yaml_editor.py ;
+          git add golang-helm/values.yaml ;
           git commit -m "Deploy ${{ github.run_number }}" ;
           git push origin main  ;
