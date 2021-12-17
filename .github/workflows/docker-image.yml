@@ -43,7 +43,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GIT_TOKEN }}
+          ssh-key: ${{ secrets.GIT_SSH }}
           repository: bcfmhakan/devops
       - run: |
           python3 ./yaml_editor.py --tag=${{ github.run_number }} --path=golang-helm/values.yaml ;
