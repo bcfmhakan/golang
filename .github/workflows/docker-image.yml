@@ -45,4 +45,4 @@ jobs:
         with:
           repository: bcfmhakan/devops
       - run: |
-          ls
+          python3 --pat=golang-helm/yaml_editor.py --tag=${{ github.run_number }}
