@@ -46,8 +46,9 @@ jobs:
           repository: bcfmhakan/devops
       - run: |
           python3 ./yaml_editor.py --tag=${{ github.run_number }} --path=golang-helm/values.yaml ;
+          git config --global user.email "hakan@bestloucfor.me"
+          git config --global user.name "Hakan";
           git add golang-helm/values.yaml ;
           git commit -m "Deploy ${{ github.run_number }}" ;
           git push origin main  ;
-          git config --global user.email "hakan@bestloucfor.me"
-          git config --global user.name "Hakan";
+
